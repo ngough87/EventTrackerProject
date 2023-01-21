@@ -75,7 +75,8 @@ Starting with database/schema creation in MySql Workbench, I built a small datab
 ## Lesson Learned
 
 - I learned a lot when it came to the database creation. It was a small one, but this is the first time I created one with this many tables solo. It was definitely a learning experience deciphering sql error codes. Overall, I enjoyed working in MySQL workbench, despite its many nuances.
-<img width="632" alt="Screenshot 2023-01-21 at 12 12 48 PM" src="https://user-images.githubusercontent.com/74070200/213881130-2540f1f6-84c5-4e46-b70d-ae83d0eab874.png">
+
+<img width="606" alt="Screenshot 2023-01-21 at 12 17 14 PM" src="https://user-images.githubusercontent.com/74070200/213881266-b418f68d-46ca-4fc9-84e6-28d1846679be.png">
 
 
 
