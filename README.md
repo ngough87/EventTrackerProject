@@ -41,7 +41,7 @@ http://18.189.201.125/8084/thOmaha
 
 | Return Type | Route            | Functionality |
 | ----------- | ---------------- |---------------|
-| List <EventType> | GET api/eventTypes    |Gets all eventType |
+| List < EventType > | GET api/eventTypes    |Gets all eventType |
 | EventType   | GET api/eventTypes/{eventTypeId}       |Gets one eventType by id|
 | EventType  | POST api/eventTypes       |Creates a new eventType|
 | EventType   | PUT api/eventTypes/{eventTypeId}       |Replaces an existing eventType by id|
@@ -49,7 +49,7 @@ http://18.189.201.125/8084/thOmaha
 
 | Return Type | Route            | Functionality |
 | ----------- | ---------------- |---------------|
-| List <FoodType> | GET api/foodTypes   |Gets all foodTypes  |
+| List < FoodType > | GET api/foodTypes   |Gets all foodTypes  |
 | FoodType   | GET api/foodTypes /{foodTypeId}       |Gets one foodType  by id|
 | FoodType  | POST api/foodTypes       |Creates a new foodType|
 | FoodType  | PUT api/foodTypes {foodTypeId}       |Replaces an existing foodType by id|
@@ -57,7 +57,7 @@ http://18.189.201.125/8084/thOmaha
 
 | Return Type | Route            | Functionality |
 | ----------- | ---------------- |---------------|
-| List <Rating> | GET api/ratings   |Gets all ratings  |
+| List < Rating > | GET api/ratings   |Gets all ratings  |
 | Rating   | GET api/ratings /{ratingId}       |Gets one rating  by id|
 | Rating   | POST api/ratings       |Creates a new ratings |
 | Rating   | PUT api/ratings/{ratingId}       |Replaces an existing ratings  by id|
