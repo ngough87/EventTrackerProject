@@ -10,7 +10,7 @@ public interface EventService {
 	Event  getEvent(int eventId);
 	Event create(Event event);
 	Event update(int eventId, Event event);
-	Event deleteById(int eventId);
+	boolean deleteById(int eventId);
 	
 	
 }

@@ -14,7 +14,7 @@ class EventServiceImpl implements EventService {
 
 	@Autowired
 	private EventRepository eventRepo;
-	
+
 	@Override
 	public List<Event> allEvents() {
 		// TODO Auto-generated method stub
@@ -23,35 +23,35 @@ class EventServiceImpl implements EventService {
 
 	@Override
 	public Event getEvent(int eventId) {
-		
+
 		Event event = null;
 		Optional<Event> eventOpt = eventRepo.findById(eventId);
 		if (eventOpt.isPresent()) {
 			event = eventOpt.get();
 		}
 		return event;
-		
-		
-		
-		
+
 	}
 
 	@Override
 	public Event create(Event event) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return eventRepo.saveAndFlush(event);
+	}
+
+	@Override
+	public boolean deleteById(int eventId) {
+		eventRepo.deleteById(eventId);
+		return eventRepo.existsById(eventId);
 	}
 
 	@Override
 	public Event update(int eventId, Event event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Event eventUpdated = getEvent(eventId);
 
-	@Override
-	public Event deleteById(int eventId) {
-		// TODO Auto-generated method stub
-		return null;
+		eventUpdated.setName(event.getName());
+
+		return eventRepo.save(eventUpdated);
 	}
 
 }
