@@ -15,71 +15,71 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.theomaha.entities.Event;
-import com.skilldistillery.theomaha.services.EventService;
+import com.skilldistillery.theomaha.entities.FoodType;
+import com.skilldistillery.theomaha.services.FoodTypeService;
 
 @RestController
 @RequestMapping("api")
-public class EventController {
+public class FoodTypeController {
+
+	@Autowired FoodTypeService foodTypeService;
 	
-	@Autowired EventService eventService;
-	
-	@GetMapping("events")
-	public List<Event> listAllEvents(){
-		return eventService.allEvents();
+	@GetMapping("foodTypes")
+	public List<FoodType> listAllFoodTypes(){
+		return foodTypeService.allFoodTypes();
 	}
 
 	
 	
-	@GetMapping("events/{eventId}")
-	public Event findEvent(@PathVariable Integer eventId, HttpServletResponse res ){
-		Event event =eventService.getEvent(eventId);
-		if (event == null) {
+	@GetMapping("foodTypes/{foodTypeId}")
+	public FoodType findEvent(@PathVariable Integer foodTypeId, HttpServletResponse res ){
+		FoodType foodType =foodTypeService.getFoodType(foodTypeId);
+		if (foodType == null) {
 			res.setStatus(404);
 		}
-		return event;
+		return foodType;
 	}
 	
 	
-	@PostMapping("events")
-	public Event create(@RequestBody Event event, HttpServletResponse res, HttpServletRequest req){
+	@PostMapping("foodTypes")
+	public FoodType create(@RequestBody FoodType foodType, HttpServletResponse res, HttpServletRequest req){
 		try{
-			eventService.create(event);
+			foodTypeService.create(foodType);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
-			url.append("/").append(event.getId());
+			url.append("/").append(foodType.getId());
 			res.setHeader("Location",url.toString());
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(404);
-			event=null;
+			foodType=null;
 		}
-		  return event;
+		  return foodType;
 	}
 	
-	@PutMapping("events/{eventId}")
-	public Event update(@PathVariable ("eventId") Integer eventId, @RequestBody Event event, HttpServletResponse res){
+	@PutMapping("foodTypes/{foodTypeId}")
+	public FoodType update(@PathVariable ("foodTypeId") Integer foodTypeId, @RequestBody FoodType foodType, HttpServletResponse res){
 		
 		try {
-		event = eventService.update(eventId, event);
-		if(event == null) {
+		foodType = foodTypeService.update(foodTypeId, foodType);
+		if(foodType == null) {
 			res.setStatus(404);
 		}
 		}catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-			event=null;
+			foodType=null;
 		}
 		
-		return  event;
+		return  foodType;
 	}
 
-	@DeleteMapping("events/{eventId}")
-	public void delete(@PathVariable ("eventId") Integer eventId, HttpServletResponse res) {
+	@DeleteMapping("foodTypes/{foodTypeId}")
+	public void deletePost(@PathVariable ("foodTypeId") Integer foodTypeId, HttpServletResponse res) {
 		
 		try {
-			if(eventService.deleteById(eventId)) {
+			if(foodTypeService.deleteById(foodTypeId)) {
 				res.setStatus(204);
 			}
 			else {

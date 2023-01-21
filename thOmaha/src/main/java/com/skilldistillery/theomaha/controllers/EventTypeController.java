@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.theomaha.entities.EventType;
-import com.skilldistillery.theomaha.repositories.EventTypeService;
+import com.skilldistillery.theomaha.services.EventTypeService;
 
 @RestController
 @RequestMapping("api")
@@ -32,13 +32,13 @@ public class EventTypeController {
 
 	
 	
-	@GetMapping("eventTypes/{eventId}")
+	@GetMapping("eventTypes/{eventTypeId}")
 	public EventType findEventType(@PathVariable Integer eventTypeId, HttpServletResponse res ){
-		EventType event =eventTypeService.getEventType(eventTypeId);
-		if (event == null) {
+		EventType eventType =eventTypeService.getEventType(eventTypeId);
+		if (eventType == null) {
 			res.setStatus(404);
 		}
-		return event;
+		return eventType;
 	}
 	
 	

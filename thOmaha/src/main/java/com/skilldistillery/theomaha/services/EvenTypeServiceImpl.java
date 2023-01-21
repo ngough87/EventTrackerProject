@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.theomaha.entities.Event;
 import com.skilldistillery.theomaha.entities.EventType;
 import com.skilldistillery.theomaha.repositories.EvenTypeRepository;
-import com.skilldistillery.theomaha.repositories.EventTypeService;
 
 @Service
 public class EvenTypeServiceImpl implements EventTypeService {
@@ -19,7 +18,6 @@ public class EvenTypeServiceImpl implements EventTypeService {
 
 	@Override
 	public List<EventType> allEventTypes() {
-		// TODO Auto-generated method stub
 		return eventTypeRepo.findAll();
 	}
 

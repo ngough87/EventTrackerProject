@@ -1,4 +1,4 @@
-package com.skilldistillery.theomaha.repositories;
+package com.skilldistillery.theomaha.services;
 
 import java.util.List;
 

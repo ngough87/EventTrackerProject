@@ -15,71 +15,71 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.theomaha.entities.Event;
-import com.skilldistillery.theomaha.services.EventService;
+import com.skilldistillery.theomaha.entities.Category;
+import com.skilldistillery.theomaha.services.CategoryService;
 
 @RestController
 @RequestMapping("api")
-public class EventController {
+public class CategoryController {
+
+	@Autowired CategoryService catService;
 	
-	@Autowired EventService eventService;
-	
-	@GetMapping("events")
-	public List<Event> listAllEvents(){
-		return eventService.allEvents();
+	@GetMapping("categories")
+	public List<Category> listAllCategories(){
+		return catService.allCategorys();
 	}
 
 	
 	
-	@GetMapping("events/{eventId}")
-	public Event findEvent(@PathVariable Integer eventId, HttpServletResponse res ){
-		Event event =eventService.getEvent(eventId);
-		if (event == null) {
+	@GetMapping("categories/{categoryId}")
+	public Category findEvent(@PathVariable Integer categoryId, HttpServletResponse res ){
+		Category category =catService.getCategory(categoryId);
+		if (category == null) {
 			res.setStatus(404);
 		}
-		return event;
+		return category;
 	}
 	
 	
-	@PostMapping("events")
-	public Event create(@RequestBody Event event, HttpServletResponse res, HttpServletRequest req){
+	@PostMapping("categories")
+	public Category create(@RequestBody Category category, HttpServletResponse res, HttpServletRequest req){
 		try{
-			eventService.create(event);
+			catService.create(category);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
-			url.append("/").append(event.getId());
+			url.append("/").append(category.getId());
 			res.setHeader("Location",url.toString());
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(404);
-			event=null;
+			category=null;
 		}
-		  return event;
+		  return category;
 	}
 	
-	@PutMapping("events/{eventId}")
-	public Event update(@PathVariable ("eventId") Integer eventId, @RequestBody Event event, HttpServletResponse res){
+	@PutMapping("categories/{categoryId}")
+	public Category update(@PathVariable ("categoryId") Integer categoryId, @RequestBody Category category, HttpServletResponse res){
 		
 		try {
-		event = eventService.update(eventId, event);
-		if(event == null) {
+		category = catService.update(categoryId, category);
+		if(category == null) {
 			res.setStatus(404);
 		}
 		}catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-			event=null;
+			category=null;
 		}
 		
-		return  event;
+		return  category;
 	}
 
-	@DeleteMapping("events/{eventId}")
-	public void delete(@PathVariable ("eventId") Integer eventId, HttpServletResponse res) {
+	@DeleteMapping("categories/{categoryId}")
+	public void delete(@PathVariable ("categoryId") Integer categoryId, HttpServletResponse res) {
 		
 		try {
-			if(eventService.deleteById(eventId)) {
+			if(catService.deleteById(categoryId)) {
 				res.setStatus(204);
 			}
 			else {
@@ -93,5 +93,7 @@ public class EventController {
 		
 		
 	}
+	
+	
 	
 }

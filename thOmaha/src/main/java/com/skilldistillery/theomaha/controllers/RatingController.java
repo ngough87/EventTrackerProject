@@ -15,71 +15,71 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.theomaha.entities.Event;
-import com.skilldistillery.theomaha.services.EventService;
+import com.skilldistillery.theomaha.entities.Rating;
+import com.skilldistillery.theomaha.services.RatingService;
 
 @RestController
 @RequestMapping("api")
-public class EventController {
+public class RatingController {
 	
-	@Autowired EventService eventService;
+	@Autowired RatingService ratService;
 	
-	@GetMapping("events")
-	public List<Event> listAllEvents(){
-		return eventService.allEvents();
+	@GetMapping("ratings")
+	public List<Rating> listAllRatings(){
+		return ratService.allRatings();
 	}
 
 	
 	
-	@GetMapping("events/{eventId}")
-	public Event findEvent(@PathVariable Integer eventId, HttpServletResponse res ){
-		Event event =eventService.getEvent(eventId);
-		if (event == null) {
+	@GetMapping("ratings/{ratingId}")
+	public Rating findRating(@PathVariable Integer ratingId, HttpServletResponse res ){
+		Rating rating =ratService.getRating(ratingId);
+		if (rating == null) {
 			res.setStatus(404);
 		}
-		return event;
+		return rating;
 	}
 	
 	
-	@PostMapping("events")
-	public Event create(@RequestBody Event event, HttpServletResponse res, HttpServletRequest req){
+	@PostMapping("ratings")
+	public Rating create(@RequestBody Rating rating, HttpServletResponse res, HttpServletRequest req){
 		try{
-			eventService.create(event);
+			ratService.create(rating);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
-			url.append("/").append(event.getId());
+			url.append("/").append(rating.getId());
 			res.setHeader("Location",url.toString());
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(404);
-			event=null;
+			rating=null;
 		}
-		  return event;
+		  return rating;
 	}
 	
-	@PutMapping("events/{eventId}")
-	public Event update(@PathVariable ("eventId") Integer eventId, @RequestBody Event event, HttpServletResponse res){
+	@PutMapping("ratings/{ratingId}")
+	public Rating update(@PathVariable ("ratingId") Integer ratingId, @RequestBody Rating rating, HttpServletResponse res){
 		
 		try {
-		event = eventService.update(eventId, event);
-		if(event == null) {
+		rating = ratService.update(ratingId, rating);
+		if(rating == null) {
 			res.setStatus(404);
 		}
 		}catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-			event=null;
+			rating=null;
 		}
 		
-		return  event;
+		return  rating;
 	}
 
-	@DeleteMapping("events/{eventId}")
-	public void delete(@PathVariable ("eventId") Integer eventId, HttpServletResponse res) {
+	@DeleteMapping("ratings/{ratingId}")
+	public void delete(@PathVariable ("ratingId") Integer ratingId, HttpServletResponse res) {
 		
 		try {
-			if(eventService.deleteById(eventId)) {
+			if(ratService.deleteById(ratingId)) {
 				res.setStatus(204);
 			}
 			else {
@@ -94,4 +94,5 @@ public class EventController {
 		
 	}
 	
+
 }
