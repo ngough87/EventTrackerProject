@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Restaraunt {
+public class Restaurant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -34,7 +34,7 @@ public class Restaraunt {
 	
 	private String description;
 
-	public Restaraunt() {
+	public Restaurant() {
 		super();
 	}
 
@@ -109,7 +109,7 @@ public class Restaraunt {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Restaraunt other = (Restaraunt) obj;
+		Restaurant other = (Restaurant) obj;
 		return id == other.id;
 	}
 

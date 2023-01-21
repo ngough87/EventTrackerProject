@@ -25,7 +25,7 @@ public class Category {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="category")
-	private List<Restaraunt> restaraunts;
+	private List<Restaurant> restaraunts;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="category")
@@ -59,11 +59,11 @@ public class Category {
 		this.description = description;
 	}
 
-	public List<Restaraunt> getRestaraunts() {
+	public List<Restaurant> getRestaraunts() {
 		return restaraunts;
 	}
 
-	public void setRestaraunts(List<Restaraunt> restaraunts) {
+	public void setRestaraunts(List<Restaurant> restaraunts) {
 		this.restaraunts = restaraunts;
 	}
 

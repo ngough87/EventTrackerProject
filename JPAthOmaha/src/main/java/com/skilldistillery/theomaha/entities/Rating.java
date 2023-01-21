@@ -23,7 +23,7 @@ public class Rating {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="rating")
-	private List<Restaraunt> retaurants;
+	private List<Restaurant> retaurants;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="rating")
@@ -67,11 +67,11 @@ public class Rating {
 	
 	
 
-	public List<Restaraunt> getRetaurants() {
+	public List<Restaurant> getRetaurants() {
 		return retaurants;
 	}
 
-	public void setRetaurants(List<Restaraunt> retaurants) {
+	public void setRetaurants(List<Restaurant> retaurants) {
 		this.retaurants = retaurants;
 	}
 

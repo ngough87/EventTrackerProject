@@ -29,7 +29,7 @@ public class FoodType {
 		
 		@JsonIgnore
 		@OneToMany(mappedBy="foodType")
-		private List<Restaraunt> restaraunts;
+		private List<Restaurant> restaraunts;
 
 		public FoodType() {
 			super();
@@ -61,11 +61,11 @@ public class FoodType {
 
 		
 
-		public List<Restaraunt> getRestaraunts() {
+		public List<Restaurant> getRestaraunts() {
 			return restaraunts;
 		}
 
-		public void setRestaraunts(List<Restaraunt> restaraunts) {
+		public void setRestaraunts(List<Restaurant> restaraunts) {
 			this.restaraunts = restaraunts;
 		}
 
