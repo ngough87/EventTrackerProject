@@ -40,6 +40,11 @@ public class RestarauntServiceImpl implements RestarauntService {
 		Restaraunt restUpdated = getRestaraunt(restarauntId);
 
 		restUpdated.setName(restaraunt.getName());
+		restUpdated.setCategory(restaraunt.getCategory());
+		restUpdated.setLocation(restaraunt.getLocation());
+		restUpdated.setFoodType(restaraunt.getFoodType());
+		restUpdated.setRating(restaraunt.getRating());
+		restUpdated.setDescription(restaraunt.getDescription());
 
 		return restRepo.save(restUpdated);
 	}

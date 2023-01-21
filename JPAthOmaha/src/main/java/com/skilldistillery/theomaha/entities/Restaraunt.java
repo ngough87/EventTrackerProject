@@ -21,7 +21,7 @@ public class Restaraunt {
 	private String location;
 	
 	@ManyToOne
-	@JoinColumn(name="food_type")
+	@JoinColumn(name="food_type_id")
 	private FoodType foodType ;
 	
 	@ManyToOne
@@ -29,7 +29,7 @@ public class Restaraunt {
 	private Category category ;
 	
 	@ManyToOne
-	@JoinColumn(name="rating")
+	@JoinColumn(name="rating_id")
 	private Rating rating;
 	
 	private String description;
