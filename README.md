@@ -1,9 +1,10 @@
 # EventTrackerProject
 
-##Overview
+## Overview
 
+The goal of this project was create a Spring Boot REST project in conjunction with REST API controllers, services and Spring Data JPA repositories. Starting with database/schema creation in MySql Workbench, I built a small database with 6 tables. After completing the database, I moved on to JPA project creation in eclipse wherein I created 6 entities for corresponding database tables, in doing so I mapped all entity classes appropriately. After JPA completion, I started on the Spring Boot project, wherein I completed all controller and service logic to perform full CRUD on each entity totaling in 24 classes/interfaces of a REST API. I then tested controller routes using Postman. Overall this project was easy and fun, however time consuming considering the amount of class/interfaces/packages needed for each entity.
 
-##Expected Routes
+## Expected Routes
 
 | Return Type | Route            | Functionality |
 | ----------- | ---------------- |---------------|
@@ -56,7 +57,22 @@
 | Rating   | PUT api/ratings/{ratingId}       |Replaces an existing ratings  by id|
 | void   | DELETE api/ratings/{ratingId}      |Deletes an existing ratings  by id|
 
-##Technologies Used
+## Technologies Used
+  - Java
+  - REST
+  - Spring Web
+  - Spring Data JPA
+  - MySQL Workbench
+  - AWS EC2
+  - MySQL Driver
+  - Git
+  - Gradle
+  - Eclipse
 
+## Lesson Learned
 
-##Lesson Learned
+- I learned a lot when it came to the database creation. It was a small one, but this is the first time I created one with this many tables solo. It was definitely a learning experience deciphering sql error codes. Overall, I enjoyed working in MySQL workbench, despite its many nuances.
+
+- I had an issue with naming convention. I misspelled the work "restaurant" in one location. It took quite some time to locate the misspelled word as it was not popping out with an error or anything like that.
+
+- I think I finally have a good understanding of entity mapping. In the past I struggled with this concept. I think with this project, it finally clicked. That felt really good. 
