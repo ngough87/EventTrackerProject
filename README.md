@@ -14,7 +14,7 @@ http://18.189.201.125/8084/thOmaha
 
 | Return Type | Route            | Functionality |
 | ----------- | ---------------- |---------------|
-| List<Event> | GET api/events    |Gets all events |
+| List< Event > | GET api/events    |Gets all events |
 | Event   | GET api/events/{eventId}       |Gets one event by id|
 | Event   | POST api/events       |Creates a new event|
 | Event   | PUT api/events/{eventId}       |Replaces an existing event by id|
@@ -23,7 +23,7 @@ http://18.189.201.125/8084/thOmaha
 
 | Return Type | Route            | Functionality |
 | ----------- | ---------------- |---------------|
-| List<Category> | GET api/categories    |Gets all categories|
+| List < Category > | GET api/categories    |Gets all categories|
 | Category   | GET api/categories/{categoryid}       |Gets one category by id|
 | Category   | POST api/categories       |Creates a new category|
 | Category   | PUT api/categories/{categoryid}       |Replaces an existing category by id|
@@ -32,7 +32,7 @@ http://18.189.201.125/8084/thOmaha
 
 | Return Type | Route            | Functionality |
 | ----------- | ---------------- |---------------|
-| List<Restaurant> | GET api/restaurants    |Gets all restaurants|
+| List < Restaurant > | GET api/restaurants    |Gets all restaurants|
 | Restaurant   | GET api/restaurants/{restaurantId}       |Gets one restaurant by id|
 | Restaurant   | POST api/restaurants       |Creates a new restaurant |
 | Restaurant   | PUT api/restaurants/{restaurantId}       |Replaces an existing restaurant  by id|
