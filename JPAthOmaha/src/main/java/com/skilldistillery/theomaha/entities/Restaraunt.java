@@ -1,8 +1,8 @@
 package com.skilldistillery.theomaha.entities;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Event {
-
+public class Restaraunt {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -21,26 +20,21 @@ public class Event {
 	
 	private String location;
 	
-	private LocalDateTime date;
-	
-	private String description;
-	
-	private String image;
-	
 	@ManyToOne
-	@JoinColumn(name="event_type_id")
-	private EventType eventType;
+	@JoinColumn(name="food_type")
+	private FoodType foodType ;
 	
 	@ManyToOne
 	@JoinColumn(name="category_id")
 	private Category category ;
 	
 	@ManyToOne
-	@JoinColumn(name="rating_id")
+	@JoinColumn(name="rating")
 	private Rating rating;
 	
+	private String description;
 
-	public Event() {
+	public Restaraunt() {
 		super();
 	}
 
@@ -68,38 +62,14 @@ public class Event {
 		this.location = location;
 	}
 
-	public LocalDateTime getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDateTime date) {
-		this.date = date;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
 	
 
-	public EventType getEventType() {
-		return eventType;
+	public FoodType getFoodType() {
+		return foodType;
 	}
 
-	public void setEventType(EventType eventType) {
-		this.eventType = eventType;
+	public void setFoodType(FoodType foodType) {
+		this.foodType = foodType;
 	}
 
 	public Category getCategory() {
@@ -108,6 +78,14 @@ public class Event {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Rating getRating() {
@@ -131,16 +109,15 @@ public class Event {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Event other = (Event) obj;
+		Restaraunt other = (Restaraunt) obj;
 		return id == other.id;
 	}
 
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", location=" + location + ", date=" + date + ", description="
-				+ description + ", image=" + image + ", eventType=" + eventType + ", category=" + category + ", rating="
-				+ rating + "]";
+		return "Restaraunt [id=" + id + ", name=" + name + ", location=" + location + ", foodType=" + foodType
+				+ ", category=" + category + ", rating=" + rating + ", description=" + description + "]";
 	}
 	
-	
+
 }
