@@ -7,7 +7,7 @@ The goal of this project was create a Spring Boot REST project in conjunction wi
 Starting with database/schema creation in MySql Workbench, I built a small database with 6 tables. After completing the database, I moved on to JPA project creation in eclipse wherein I created 6 entities for corresponding database tables, in doing so I mapped all entity classes appropriately. After JPA completion, I started on the Spring Boot project, wherein I completed all controller and service logic to perform full CRUD on each entity totaling in 24 classes/interfaces of a REST API. I then tested controller routes using Postman. Overall this project was easy and fun, however time consuming considering the amount of class/interfaces/packages needed for each entity. 
 
 AWS:
-http://18.189.201.125/8080/thOmaha/api
+http://18.189.201.125:8080/thOmaha/api
 
 
 ## Expected Routes
