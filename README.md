@@ -84,7 +84,7 @@ http://18.189.201.125:8080/thOmaha/api
 
 
 
-- I had an issue with naming convention. I misspelled the work "restaurant" in one location. It took quite some time to locate the misspelled word as it was not popping out with an error or anything like that.
+- I had an issue with naming convention. I misspelled the word "restaurant" in one location. It took quite some time to locate the misspelled word as it was not popping out with an error or anything like that.
 
 - I think I finally have a good understanding of entity mapping. In the past I struggled with this concept. I think with this project, it finally clicked. That felt really good. 
 
