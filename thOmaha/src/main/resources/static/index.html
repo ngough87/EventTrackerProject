@@ -7,8 +7,63 @@
 </head>
 <body>
 
-<h1> What's happening! </h1>
+	<h1>What's happening!</h1>
 
+<form name="eventForm">
+	<input type="number" name="eventId">
+	<button name="lookup"> Get Event By Id</button>
+
+</form>
+
+<div id="output">
+
+	<div id="output">
+
+	<div id="eventDetails"></div>
+
+	<div id="newEventForm">
+<h3>Add a new Event</h3>
+<form name="newEventForm" >
+<label for="name">Name</label>
+<input type="text" name="name" placeholder="Event Name">
+<label for="descritpion">Description</label>
+<input type="text" name="description" placeholder="Event Description">
+<label for="location">Location</label>
+<input type="text" name="location" placeholder="Location">
+<label for="start">Date</label>
+<input type="date" name="date" >
+<label for="eventType">Event Type</label>
+<select name="eventType" id="eventTypes">
+<option value="1" id="1">Educational</option>
+<option value="2" id="2">Entertainment</option>
+<option value="3" id="3">Arts & Crafts</option>
+<option value="4"id="4">Holiday</option>
+<option value="5" id="5">Get Active</option>
+<option value="6" id="6">Classes</option>
+</select>
+<label for="category">Category</label>
+<select name="category" id="categories">
+<option value="1" id="1">Family Friendly</option>
+<option value="2" id="2">Infant</option>
+<option value="3" id="3">Toddler</option>
+<option value="4" id="4">Teen</option>
+<option value="5" id="5">Young Adult</option>
+<option value="6" id="5">Whole Family</option>
+</select>
+
+<label for="rating">Price Rating</label>
+<select name="rating"id="rating">
+	<option value="1" id="1">Free</option>
+	<option value="2" id="2">$</option>
+	<option value="3" id="3">$$</option>
+	<option value="4" id="4">$$$</option>
+	
+</select>
+<button name="addEventButton">Add Event</button>
+</form>
+
+	</div>
+</div>
 
 </body>
 </html>

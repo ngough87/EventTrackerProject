@@ -12,7 +12,7 @@
     <class>com.skilldistillery.theomaha.entities.Category</class>
     <class>com.skilldistillery.theomaha.entities.Rating</class>
     <class>com.skilldistillery.theomaha.entities.EventType</class>
-    <class>com.skilldistillery.theomaha.entities.Restaraunt</class>
+    <class>com.skilldistillery.theomaha.entities.Restaurant</class>
     <class>com.skilldistillery.theomaha.entities.FoodType</class>
    
     

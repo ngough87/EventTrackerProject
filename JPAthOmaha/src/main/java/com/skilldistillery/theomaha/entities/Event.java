@@ -1,6 +1,6 @@
 package com.skilldistillery.theomaha.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -21,7 +21,7 @@ public class Event {
 	
 	private String location;
 	
-	private LocalDateTime date;
+	private LocalDate date;
 	
 	private String description;
 	
@@ -68,11 +68,11 @@ public class Event {
 		this.location = location;
 	}
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
