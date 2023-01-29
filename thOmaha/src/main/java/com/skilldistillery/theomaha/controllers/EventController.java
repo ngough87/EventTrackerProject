@@ -79,7 +79,7 @@ public class EventController {
 	public void delete(@PathVariable ("eventId") Integer eventId, HttpServletResponse res) {
 		
 		try {
-			if(eventService.deleteById(eventId)) {
+			if(!eventService.deleteById(eventId)) {
 				res.setStatus(204);
 			}
 			else {
