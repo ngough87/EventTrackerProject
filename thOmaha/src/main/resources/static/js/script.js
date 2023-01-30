@@ -38,7 +38,14 @@ function init() {
 
 
   });
-}
+
+// //   document.editForm.submit.addEventListener("click", function(evt){
+// // 	evt.preventDefault();
+// // 	addUpdatedEvent();
+
+  
+  
+// });
 
 
 function createEvent(event) {
@@ -118,12 +125,12 @@ function getEvent(eventId) {
 	li.textContent = "Price Rating: " + event.rating["name"];
 	ul.appendChild(li);
   
-	let deleteButton = document.createElement("input");
-	deleteButton.type = "button";
-	deleteButton.name = "delete";
-	deleteButton.value = "Delete";
-	deleteButton.addEventListener("click", deleteEventButton);
-	dataDiv.appendChild(deleteButton);
+	// let deleteButton = document.createElement("input");
+	// deleteButton.type = "button";
+	// deleteButton.name = "delete";
+	// deleteButton.value = "Delete";
+	// deleteButton.addEventListener("click", deleteEventButton);
+	// dataDiv.appendChild(deleteButton);
   
 	let edit = document.createElement("input");
 	edit.type = "button";
@@ -242,8 +249,8 @@ function idForUpdate(id) {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        let eventId = JSON.parse(xhr.responseText);
-        addInfoToForm(eventId);
+        let event = JSON.parse(xhr.responseText);
+        addInfoToForm(event);
       } else {
         console.log(xhr.status);
       }
@@ -265,24 +272,28 @@ function editEventForm() {
   console.log(id);
 
   let editEvent = document.createElement("form");
-  let name = document.createElement("input");
-  let description = document.createElement("input");
-  let location = document.createElement("input");
-  let date = document.createElement("input");
-  let submit = document.createElement("button");
- 
   editEvent.name = "editEvent";
+  let name = document.createElement("input");
   name.type = "text"; 
   name.name = "name";
+  let description = document.createElement("input");
   description.type = "text";
    description.name = "description";
+  let location = document.createElement("input");
   location.type = "text";
   location.name = "location";
+  let date = document.createElement("input");
   date.type = "date"; 
   date.name = "date";
+  let submit = document.createElement("input");
+ submit.type = "button"; 
   submit.name = "submit";
   submit.value = "Submit";
-  submit.innerHTML = "Submit";
+  
+  
+
+
+
 
   editEvent.appendChild(hiddenId);
   console.log('after:' + id);
@@ -298,25 +309,27 @@ function editEventForm() {
 }
 }
 
-function addInfoToForm(eventId) {
+function addInfoToForm(event) {
   let editForm = document.editEvent;
-  editForm.name.value = eventId.name;
-  editForm.description.value = eventId.description;
-  editForm.date.value = eventId.date;
-  editForm.location.value = eventId.location;
-  editForm.submit.addEventListener("click", addUpdatedEvent);
-}
+  editForm.name.value = event.name;
+  editForm.description.value = event.description;
+  editForm.date.value = event.date;
+  editForm.location.value = event.location;
+ 
+  editForm.submit.addEventListener("click", addUpdatedEvent );
+	
+
 
 function addUpdatedEvent(e) {
   e.preventDefault();
-  let updateForm = document.editEvent;
-  let id = updateForm.firstElementChild.textContent;
+  let editEvent = document.editEvent;
+  let id = editEvent.firstElementChild.textContent;
   
   let updatedEvent = {
-	  name: updateForm.name.value,
-	  description: updateForm.description.value,
-	  location: updateForm.location.value,
-	  date: updateForm.date.value,
+	  name: editEvent.name.value,
+	  description: editEvent.description.value,
+	  location: editEvent.location.value,
+	  date: editEvent.date.value,
 	};
 	
 	let xhr = new XMLHttpRequest();
@@ -339,8 +352,7 @@ function addUpdatedEvent(e) {
 }
 
 function deleteEventButton() {
-  let id =
-    document.getElementById("eventDetails").firstElementChild.textContent;
+  let id =document.getElementById("eventDetails").firstElementChild.textContent;
   console.log(id);
   deleteEvent(id);
 }
@@ -363,4 +375,6 @@ function deleteEvent(id) {
   };
 
   xhr.send();
+}
+}
 }
