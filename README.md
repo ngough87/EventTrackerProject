@@ -8,7 +8,10 @@ Starting with database/schema creation in MySql Workbench, I built a small datab
 
 I returned to this project to add JSON and SpringREST with JSON handling the JavaScript. This leg of the project consisted of adding CRUD opertations to a front end application. By implementing this, the user is able to perform CRUD in the event entity. I started by ensuring all of my entites were still mapped correctly via postman. I then created forms for both a create event and update event funtion. Additionally, I created a table to view all records. This portion is far from complete as I was unable to complete the delete and update functions successfully.  
 
-AWS:
+Deployed application:
+http://18.189.201.125:8080/thOmaha
+
+AWS api routes:
 http://18.189.201.125:8080/thOmaha/api
 
 
