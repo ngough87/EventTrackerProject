@@ -6,7 +6,12 @@ The goal of this project was create a Spring Boot REST project in conjunction wi
 
 Starting with database/schema creation in MySql Workbench, I built a small database with 6 tables. After completing the database, I moved on to JPA project creation in eclipse wherein I created 6 entities for corresponding database tables, in doing so I mapped all entity classes appropriately. After JPA completion, I started on the Spring Boot project, wherein I completed all controller and service logic to perform full CRUD on each entity totaling in 24 classes/interfaces of a REST API. I then tested controller routes using Postman. Overall this project was easy and fun, however time consuming considering the amount of class/interfaces/packages needed for each entity. 
 
-AWS:
+I returned to this project to add JSON and SpringREST with JSON handling the JavaScript. This leg of the project consisted of adding CRUD opertations to a front end application. By implementing this, the user is able to perform CRUD in the event entity. I started by ensuring all of my entites were still mapped correctly via postman. I then created forms for both a create event and update event funtion. Additionally, I created a table to view all records. This portion is far from complete as I was unable to complete the delete and update functions successfully.  
+
+Deployed application:
+http://18.189.201.125:8080/thOmaha
+
+AWS api routes:
 http://18.189.201.125:8080/thOmaha/api
 
 
@@ -89,3 +94,6 @@ http://18.189.201.125:8080/thOmaha/api
 - I think I finally have a good understanding of entity mapping. In the past I struggled with this concept. I think with this project, it finally clicked. That felt really good. 
 
 - This is not a lessons learned, but I am looking forward to adding a front-end to this project. 
+- Adding the CRUD operations was especially difficult. I had a lot of troule with updating and deleting events. I suspect this may be due to the fact that I have so many tables. Unfortunately, I was not able to finish these functions in the alotted time. I will be returning to this to complete in the coming days.
+- Getting forms to work properly was difficult. I couldn't figure out why some of my buttons were not appearing. 
+
