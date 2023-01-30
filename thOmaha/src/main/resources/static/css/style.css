@@ -1,8 +1,12 @@
-@charset "UTF-8";table{
+table{
   border: solid;
 }
 
 th, td{
   padding: 10px;
   text-align: center;
+}
+
+tbody tr:nth-child(odd){
+  background: #ccc;
 }

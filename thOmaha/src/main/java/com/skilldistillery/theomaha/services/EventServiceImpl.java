@@ -49,6 +49,9 @@ class EventServiceImpl implements EventService {
 		Event eventUpdated = getEvent(eventId);
 
 		eventUpdated.setName(event.getName());
+		eventUpdated.setDescription(event.getDescription());
+		eventUpdated.setLocation(event.getLocation());
+		eventUpdated.setDate(event.getDate());
 
 		return eventRepo.save(eventUpdated);
 	}
