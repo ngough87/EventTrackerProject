@@ -13,7 +13,8 @@ function init() {
     }
   });
 
-  document.newEventForm.addEventButton.addEventListener('click', createEvent);
+  document.newEventForm.addEventButton.addEventListener("click", createEvent);
+  //document.eventForm.lookupAll.addEventListener("click", displayEvents);
 }
 function loadEvents() {
   //AJAX
@@ -23,9 +24,9 @@ function loadEvents() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        let eventsList = JSON.parse(xhr.responseText);
+        let eventList = JSON.parse(xhr.responseText);
 
-        displayEvents(eventsList);
+        //displayEvents(eventList);
       } else {
         displayError("All events not found" + xhr.status);
       }
@@ -35,83 +36,111 @@ function loadEvents() {
   xhr.send();
 }
 
-function displayEvents(eventsList) {
-  let eventTable = document.getElementById("lookupAll");
-  eventTable.textContent = "";
-  let tableHeader = document.createElement("thead");
-  let headerRow = document.createElement("tr");
-  let eventHeader = document.createElement("th");
-  let descriptionHeader = document.createElement("th");
-  let locationHeader = document.createElement("th");
-  let dateHeader = document.createElement("th");
-  let eventTypeHeader = document.createElement("th");
-  let categoryHeader = document.createElement("th");
-  let ratingHeader = document.createElement("th");
-
-  eventHeader.textContent = "Event Name";
-  descriptionHeader.textContent = "Description";
-  locationHeader.textContent = "Location";
-  dateHeader.textContent = "Date";
-  eventTypeHeader.textContent = "Event Type";
-  categoryHeader.textContent = "Category";
-  ratingHeader.textContent = "Price Rating";
-
-  tableHeader.appendChild(headerRow);
-  eventTable.appendChild(tableHeader);
-
-  let tbody = document.createElement("tbody");
-  eventTable.append(tbody);
-  for (eventList of eventsList) {
-    let tr = document.createElement("tr");
-    let tdId = document.createElement("td");
-    let tdName = document.createElement("td");
-    let tdDescritpion = document.createElement("td");
-    let tdLocation = document.createElement("td");
-    let tdDate = document.createElement("td");
-    let tdEventType = document.createElement("td");
-    let tdCategory = document.createElement("td");
-    let tdRating = document.createElement("td");
-
-    tdId.textContent = eventList.id;
-    tdName.textContent = eventList.name;
-    tdDescritpion.textContent = eventList.description;
-    tdLocation.textContent = eventList.location;
-    tdDate.textContent = eventList.date;
-    tdEventType.textContent = eventList.eventType;
-    tdCategory.textContent = eventList.category;
-    tdRating.textContent = eventList.rating;
-  }
+function displayEvents(eventList) {
+  console.log(eventList);
+  createTable(eventList);
 }
 
+let createTable = function (eventList) {
+  let eventOutput = document.getElementById("output");
+  eventOutput.textContent = "";
+  let table = document.createElement("table");
+  createHead(table);
+  createBody(table, eventList);
+  eventOutput.appendChild(table);
+};
+
+let createHead = function (table) {
+  //create thead
+  let headers = [
+    "name",
+    "description",
+    "location",
+    "date",
+    "eventType",
+    "category",
+    "rating"
+  ];
+  let thead = document.createElement("thead");
+  let trow = document.createElement("tr");
+  for (i = 0; i <= headers.length; i++) {
+    let th = document.createElement("th");
+    th.textContent = headers[i];
+    trow.appendChild(th);
+  }
+  table.appendChild(thead);
+  thead.appendChild(trow);
+};
+let createBody = function (table, eventList) {
+  let tbody = document.createElement("tbody");
+
+  eventList.forEach(function (eventList) {
+    let trow = document.createElement("tr");
+
+ 
+    let name = document.createElement("td");
+    name.textContent = eventList.name;
+    trow.appendChild(name);
+
+  
+    let description = document.createElement("td");
+    description.textContent = eventList.description;
+    trow.appendChild(description);
+
+ 
+    let location = document.createElement("td");
+    location.textContent = eventList.location;
+    trow.appendChild(location);
+
+ 
+    let date = document.createElement("td");
+    date.textContent = eventList.date;
+    trow.appendChild(date);
+
+  
+    let eventType = document.createElement("td");
+    eventType.textContent = eventList.eventType;
+    trow.appendChild(eventType);
+
+   
+    let category = document.createElement("td");
+    category.textContent = eventList.category;
+    trow.appendChild(category);
+   
+    let rating = document.createElement("td");
+	rating .textContent = eventList.rating 
+    trow.appendChild(category);
+    tbody.appendChild(trow);
+    table.appendChild(tbody);
+  });
+};
+
+
+function getEvent(eventId) {
+	console.log(eventId);
+  
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", "api/events/" + eventId);
+	xhr.onreadystatechange = function () {
+	  if (xhr.readyState === 4) {
+		if (xhr.status === 200) {
+		  let event = JSON.parse(xhr.responseText);
+		  console.log(event);
+		  displayEvent(event);
+		} else {
+		  displayError("Event not found.");
+		}
+	  }
+	};
+	xhr.send();
+  }
+
 function displayEvent(event) {
-  //   let dataDiv = document.getElementById("eventDetails");
-  //   dataDiv.textContent = "";
-  //   let id = document.createElement("div");
-  //   id.textContent = event.id;
-  //   dataDiv.append(id);
-  //   let h1 = document.createElement("h1");
-  //   h1.textContent = event.name;
-  //   dataDiv.appendChilde(h1);
-  //   let description = document.createElement("div");
-  //   description.textContent = event.description;
-  //   dataDiv.appendChild(description);
-  //   let location = document.createElement('h4');
-  //   location.textContent = event.location;
-  //   dataDiv.appendChild(location);
-  //   let date = document.createElement('h4');
-  //   date.textContent = event.date;
-  //   dataDiv.appendChild(date);
-  //   let category = document.createElement('h4');
-  //   category.textContent = category.category;
-  //   dataDiv.appendChild(category);
-  //   let eventType = document.createElement('h4');
-  //   eventType.textContent = event.eventType;
-  //   dataDiv.appendChild(eventType);
-  //   let rating = document.createElement('h4');
-  //   rating.textContent = event.rating;
-  //   dataDiv.appendChild(rating);
   let dataDiv = document.getElementById("eventDetails");
   dataDiv.textContent = "";
+  let id = document.createElement("li");
+  id.textContent = "Event Id: " + event.id;
+  dataDiv.append(id);
 
   let h1 = document.createElement("h1");
   h1.textContent = event.name;
@@ -121,9 +150,6 @@ function displayEvent(event) {
   dataDiv.appendChild(description);
   let ul = document.createElement("ul");
   dataDiv.appendChild(ul);
-  let id = document.createElement("li");
-  id.textContent = "Event Id: " + event.id;
-  ul.append(id);
   let li = document.createElement("li");
   li.textContent = "Location: " + event.location;
   ul.appendChild(li);
@@ -145,60 +171,153 @@ function displayEvent(event) {
   deleteButton.name = "delete";
   deleteButton.value = "Delete";
   deleteButton.addEventListener("click", deleteEventButton);
-  div.appendChild(deleteButton);
+  dataDiv.appendChild(deleteButton);
 
   let edit = document.createElement("input");
   edit.type = "button";
   edit.name = "edit";
   edit.value = "Edit";
-  edit.addEventListener("click", eventUpdateForm);
-  div.append(edit);
+  edit.addEventListener("click", editEventForm);
+  dataDiv.append(edit);
 }
 
-function getEvent(eventId) {
-  console.log(eventId);
+
+function createEvent(e) {
+  e.preventDefault();
+  let newEvent = {
+    name: document.newEventForm.name.value,
+    description: document.newEventForm.description.value,
+    location: document.newEventForm.location.value,
+    date: document.newEventForm.date.value,
+    eventType: { id: document.newEventForm.eventType.value },
+    category: { id: document.newEventForm.category.value },
+    rating: { id: document.newEventForm.rating.value },
+  };
 
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", "api/events/" + eventId);
+
+  xhr.open("POST", "api/events");
+  xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200 || xhr.status === 201) {
+        let event = JSON.parse(xhr.responseText);
+        displayEvent(event);
+      } else {
+        displayError("Error creating event: " + xhr.status);
+      }
+    }
+  };
+  xhr.send(JSON.stringify(newEvent));
+}
+
+function idForUpdate(id) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", "api/events" + id);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        let event = JSON.parse(xhr.responseText);
-        console.log(event);
-        displayEvent(event);
+        let eventId = JSON.parse(xhr.responseText);
+        updateEventForm(eventId);
       } else {
-        displayError("Event not found.");
+        console.error(xhr.status);
       }
     }
   };
   xhr.send();
 }
-function createEvent(e) {
-	e.preventDefault();
-	let newEvent = {
-		name: document.newEventForm.name.value,
-		description: document.newEventForm.description.value,
-		location: document.newEventForm.location.value,
-		date: document.newEventForm.date.value,
-		eventType:{id: document.newEventForm.eventType.value},
-		category: {id: document.newEventForm.category.value},
-		rating: {id: document.newEventForm.rating.value}
-	};
-	
-	let xhr = new XMLHttpRequest();
+function editEventForm() {
+  let div = document.getElementById("eventDetails");
+  let id = div.firstElementChild.textContent;
+  console.log(id);
+  div.textContent = "";
 
-	xhr.open('POST', 'api/events');
-	xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState === 4) {
-			if (xhr.status === 200 || xhr.status === 201) {
-				let event = JSON.parse(xhr.responseText);
-				displayEvent(event);
-			}
-			else {
-				displayError("Error creating event: " + xhr.status);
-			}
-		}
-	};
-	xhr.send(JSON.stringify(newEvent));
-	}
+  idForUpdate(id);
+  let hiddenId = document.createElement("div");
+  hiddenId.textContent = id;
+  hiddenId.style.display = "none";
+
+  let editEvent = document.createElement("form");
+  let name = document.createElement("input");
+  let description = document.createElement("input");
+  let location = document.createElement("input");
+  let date = document.createElement("input");
+
+  editEvent.name = "editEventForm";
+  (name.type = "text"), (name.type = "name");
+  (description.type = "text"), (description.type = "description");
+  (location.type = "text"), (location.type = "location");
+  (date.type = "date"), (date.type = "date");
+
+  editEventForm.appendChild(hiddenId);
+  editEventForm.appendChild(name);
+  editEventForm.appendChild(description);
+  editEventForm.appendChild(location);
+  editEventForm.appendChild(date);
+}
+
+function addInfoToForm(event) {
+  let editForm = document.editEventForm;
+  editForm.name.value = event.name;
+  editForm.description.value = event.description;
+  editForm.date.value = event.date;
+  editForm.location.value = event.location;
+  editForm.submit.addEventListener("click", addUpdatedEvent);
+}
+
+function addUpdatedEvent(e) {
+  e.preventDefault();
+  let updateForm = document.editEventForm;
+  let id = updateForm.firstElementChild.textContent;
+  let xhr = new XMLHttpRequest();
+
+  let updatedEvent = {
+    name: document.newEventForm.name.value,
+    description: document.newEventForm.description.value,
+    location: document.newEventForm.location.value,
+    date: document.newEventForm.date.value,
+  };
+  console.log(JSON.stringify(updatedEvent));
+  xhr.open("PUT", "api/events/" + id);
+
+  xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200 || xhr.status === 201) {
+        let event = JSON.parse(xhr.responseText);
+        displayEvent(event);
+      } else {
+        displayError("Error updating event: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send(JSON.stringify(updatedEvent));
+}
+
+function deleteEventButton() {
+  let id =
+    document.getElementById("eventDetails").firstElementChild.textContent;
+  console.log(id);
+  deleteEvent(id);
+}
+
+function deleteEvent(id) {
+  let xhr = new XMLHttpRequest();
+
+  xhr.open("DELETE", "api/events/" + id);
+  console.log("Id is: ");
+  console.log(id);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 204 || 200) {
+        alert("This event has been deleted.");
+      } else if (xhr.status === 404) {
+        displayError("ERROR: Event not found.");
+      }
+    }
+  };
+
+  xhr.send();
+}

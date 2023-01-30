@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>thOmaha</title>
 <script type="text/javascript" src="js/script.js"></script>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body >
 
@@ -12,71 +13,40 @@
 <form name="eventForm">
 	<input type="number" name="eventId">
 	<button name="lookup"> Get Event By Id</button>
-	<button name="lookupAll" id="lookupAll"> Get All Events</button>
+	<button name="lookupAll"> Get All Events</button>
 	
 	
 </form>
 
-<div id="eventTable">
+<!-- <div id="eventTable">
 
-</div>
+</div> -->
 
 <div id="output">
 
 	<div id="eventDetails" class="eventDetails">
 	
 	</div>
-<p>
-	Click on button to delete event!
+<div id="output"></div>
 
-</p>
-<button name="deleteEvent">Delete Event</button>
+<table id="eventTable"></table>
+<thead>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Location</th>
+		<th>Date</th>
+		<th>Event Type</th>
+		<th>Category</th>
+		<th>		Rating</th>
+
+	</tr>
 
 
+</thead>
 
-	<div id="updateEventForm">
-	<h3>Update Event</h3>
-	<form name="updateEventForm" >
-		<label for="eventId">Event Id</label>
-		<input type="number" name="eventId" >
-	<label for="name">Name</label>
-	<input type="text" name="name"  placeholder="Event Name">
-	<!-- <label for="descritpion">Description</label>
-	<input type="text" name="description" placeholder="Event Description">
-	<label for="location">Location</label>
-	<input type="text" name="location" placeholder="Location">
-	<label for="start">Date</label>
-	<input type="date" name="date" >
-	<label for="eventType">Event Type</label>
-	<select name="eventType" id="eventTypes">
-	<option value="1" id="1">Educational</option>
-	<option value="2" id="2">Entertainment</option>
-	<option value="3" id="3">Arts & Crafts</option>
-	<option value="4"id="4">Holiday</option>
-	<option value="5" id="5">Get Active</option>
-	<option value="6" id="6">Classes</option>
-	</select>
-	<label for="category">Category</label>
-	<select name="category" id="categories">
-	<option value="1" id="1">Family Friendly</option>
-	<option value="2" id="2">Infant</option>
-	<option value="3" id="3">Toddler</option>
-	<option value="4" id="4">Teen</option>
-	<option value="5" id="5">Young Adult</option>
-	<option value="6" id="5">Whole Family</option>
-	</select>
+</table>
 	
-	<label for="rating">Price Rating</label>
-	<select name="rating"id="rating">
-		<option value="1" id="1">Free</option>
-		<option value="2" id="2">$</option>
-		<option value="3" id="3">$$</option>
-		<option value="4" id="4">$$$</option> -->
-		
-	</select>
-	<button name="updateEventButton">Update Event</button>
-	</form>
-</div>
 
 	<div id="newEventForm">
 <h3>Add a new Event</h3>
