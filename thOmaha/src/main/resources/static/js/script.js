@@ -39,14 +39,7 @@ function init() {
 
   });
 
-// //   document.editForm.submit.addEventListener("click", function(evt){
-// // 	evt.preventDefault();
-// // 	addUpdatedEvent();
-
-  
-  
-// });
-
+}
 
 function createEvent(event) {
 
@@ -125,12 +118,12 @@ function getEvent(eventId) {
 	li.textContent = "Price Rating: " + event.rating["name"];
 	ul.appendChild(li);
   
-	// let deleteButton = document.createElement("input");
-	// deleteButton.type = "button";
-	// deleteButton.name = "delete";
-	// deleteButton.value = "Delete";
-	// deleteButton.addEventListener("click", deleteEventButton);
-	// dataDiv.appendChild(deleteButton);
+	let deleteButton = document.createElement("input");
+	deleteButton.type = "button";
+	deleteButton.name = "delete";
+	deleteButton.value = "Delete";
+	deleteButton.addEventListener("click", deleteEventButton);
+	dataDiv.appendChild(deleteButton);
   
 	let edit = document.createElement("input");
 	edit.type = "button";
@@ -259,7 +252,7 @@ function idForUpdate(id) {
   xhr.send();
 }
 function editEventForm() {
- let div2 = document.getElementById("output");
+
 	let div = document.getElementById("eventDetails");
   let id = div.firstElementChild.textContent;
   console.log(id);
@@ -272,24 +265,24 @@ function editEventForm() {
   console.log(id);
 
   let editEvent = document.createElement("form");
-  editEvent.name = "editEvent";
   let name = document.createElement("input");
+  let description = document.createElement("input");
+  let location = document.createElement("input");
+  let date = document.createElement("input");
+  let submit = document.createElement("input");
+  
+  editEvent.name = "editEvent";
   name.type = "text"; 
   name.name = "name";
-  let description = document.createElement("input");
   description.type = "text";
-   description.name = "description";
-  let location = document.createElement("input");
+  description.name = "description";
   location.type = "text";
   location.name = "location";
-  let date = document.createElement("input");
   date.type = "date"; 
   date.name = "date";
-  let submit = document.createElement("input");
- submit.type = "button"; 
+  submit.type = "submit"; 
   submit.name = "submit";
   submit.value = "Submit";
-  
   
 
 
@@ -310,15 +303,15 @@ function editEventForm() {
 }
 
 function addInfoToForm(event) {
-  let editForm = document.editEvent;
-  editForm.name.value = event.name;
-  editForm.description.value = event.description;
-  editForm.date.value = event.date;
-  editForm.location.value = event.location;
+  let form = document.editEvent;
+  form.name.value = event.name;
+  form.description.value = event.description;
+  form.date.value = event.date;
+  form.location.value = event.location;
  
-  editForm.submit.addEventListener("click", addUpdatedEvent );
+  form.submit.addEventListener("click", addUpdatedEvent );
 	
-
+}
 
 function addUpdatedEvent(e) {
   e.preventDefault();
@@ -357,17 +350,20 @@ function deleteEventButton() {
   deleteEvent(id);
 }
 
+
+
 function deleteEvent(id) {
   let xhr = new XMLHttpRequest();
 
   xhr.open("DELETE", "api/events/" + id);
-  console.log("Id is: " + id);
-  console.log(id);
+ 
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 204 || 200) {
-        alert("This event has been deleted.");
+		loadEvents();
+		document.getElementById("eventDetails").textContent = '';
+       // alert("This event has been deleted.");
       } else if (xhr.status === 404) {
         displayError("ERROR: Event not found.");
       }
@@ -376,5 +372,8 @@ function deleteEvent(id) {
 
   xhr.send();
 }
-}
-}
+
+
+
+
+
