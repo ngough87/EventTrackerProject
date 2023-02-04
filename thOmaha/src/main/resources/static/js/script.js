@@ -187,6 +187,7 @@ let createBody = function (table, eventList) {
     let name = document.createElement("td");
     name.textContent = eventList.name;
     trow.appendChild(name);
+    
 
     let description = document.createElement("td");
     description.textContent = eventList.description;
@@ -214,6 +215,8 @@ let createBody = function (table, eventList) {
 
     tbody.appendChild(trow);
     table.appendChild(tbody);
+
+   
   });
 };
 
