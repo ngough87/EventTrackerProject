@@ -7,19 +7,28 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EventListComponent } from './components/event-list/event-list.component';
+import { AboutComponent } from './components/about/about.component';
+import { RestarauntComponent } from './components/restaraunt/restaraunt.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavBarComponent
+    NavBarComponent,
+    EventListComponent,
+    AboutComponent,
+    RestarauntComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+
 
   ],
   providers: [],

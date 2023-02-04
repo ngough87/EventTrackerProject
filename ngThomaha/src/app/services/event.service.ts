@@ -76,6 +76,39 @@ url = environment.baseUrl + 'api/events';
   }
 
 
+  update(event: Event): Observable<Event> {
+    headers: {
+      'Content-Type'; 'application/json'
+    };
+    return this.http.put<Event>(`${this.url}/${event.id}`, event).pipe(
 
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+          () =>
+            new Error(
+              'EventService.create(): error creating Events: ' + err
+            )
+        );
+      })
+
+
+    );
+  }
+
+
+  destroy(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${id}`).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+          () =>
+            new Error(
+              'EventService.create(): error creating Events: ' + err
+            )
+        );
+      })
+    );
+  }
 
 }
