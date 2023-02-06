@@ -6,7 +6,11 @@ The goal of this project was create a Spring Boot REST project in conjunction wi
 
 Starting with database/schema creation in MySql Workbench, I built a small database with 6 tables. After completing the database, I moved on to JPA project creation in eclipse wherein I created 6 entities for corresponding database tables, in doing so I mapped all entity classes appropriately. After JPA completion, I started on the Spring Boot project, wherein I completed all controller and service logic to perform full CRUD on each entity totaling in 24 classes/interfaces of a REST API. I then tested controller routes using Postman. Overall this project was easy and fun, however time consuming considering the amount of class/interfaces/packages needed for each entity.
 
-I returned to this project to add JSON and SpringREST with JSON handling the JavaScript. This leg of the project consisted of adding CRUD opertations to a front end application. By implementing this, the user is able to perform CRUD in the event entity. I started by ensuring all of my entites were still mapped correctly via postman. I then created forms for both a create event and update event funtion. Additionally, I created a table to view all records. This portion is far from complete as I did add any style.
+I returned to this project to add JSON and SpringREST with JSON handling the JavaScript. This leg of the project consisted of adding CRUD opertations to a front end application. By implementing this, the user is able to perform CRUD in the event entity. I started by ensuring all of my entites were still mapped correctly via postman. I then created forms for both a create event and update event funtion. Additionally, I created a table to view all records. This portion is far from complete as I did add any style. 
+
+Configuring Angular Application:
+
+I finally added the front end to this project using Angular. I started by adding only two (event and restaurant) of the 6 entities because these are the most important. I created services, models, and components for both entities. Additionally, I created some other components for the navbar, homepage, about us page, and a not found page. A user is able to perform full CRUD on each of the entities. As of now, the page is very rough and ready. I am looking forward to coming back to this to add some style.
 
 Deployed application:
 http://18.189.201.125:8080/thOmaha
@@ -94,5 +98,13 @@ http://18.189.201.125:8080/thOmaha/api
 - I think I finally have a good understanding of entity mapping. In the past I struggled with this concept. I think with this project, it finally clicked. That felt really good.
 
 - This is not a lessons learned, but I am looking forward to adding a front-end to this project.
+
 - Adding the CRUD operations was especially difficult. I had a lot of trouble with updating events and deleting events. It turns out some stray curly braces were the culprit. Also, again naming conventions got a little convoluted. 
+
 - Getting forms to work properly was difficult. I couldn't figure out why some of my buttons were not appearing.
+
+- I had some trouble getting the restaurant entity to work. I thought it would be super easy considering I had already gotten the event entity set up. However, I forgot to ensure the restaurant entitiy was on the routing page. Luckily, it was a quick fix. 
+
+- It is good to re-serve from time to time. I had made some changes, and I could not figure out why the HTMLs were not displaying what I wanted. I looked over the code several times ensuring it was correct. Finally, I re-served and the changes appeared. When in doubt re-serve. 
+
+- Getting bootstrap to work with angular is not as easy as it is with jsps. 
