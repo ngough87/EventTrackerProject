@@ -4,14 +4,15 @@ import { AboutComponent } from './components/about/about.component';
 import { EventListComponent} from './components/event-list/event-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { RestarauntComponent } from './components/restaraunt/restaraunt.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
 
 const routes: Routes = [
 
 { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'restaraunt', component: RestarauntComponent },
+  { path: 'restaurant', component: RestaurantComponent },
+  { path: 'restaraunt/:id', component: RestaurantComponent },
   { path: 'event', component: EventListComponent },
   { path: 'event/:id', component: EventListComponent },
 

@@ -9,7 +9,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { AboutComponent } from './components/about/about.component';
-import { RestarauntComponent } from './components/restaraunt/restaraunt.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     NavBarComponent,
     EventListComponent,
     AboutComponent,
-    RestarauntComponent,
+    RestaurantComponent,
     NotFoundComponent
   ],
   imports: [
